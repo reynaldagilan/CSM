@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Service Lifecycle Management - MapReduce Simulator</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>Cloud Service Lifecycle Management Dashboard</h1>
+            <p>MapReduce Service Simulator</p>
+        </header>
+        
+        <nav class="nav-controls">
+            <button onclick="startSimulation()">Start Simulation</button>
+            <button onclick="pauseSimulation()">Pause</button>
+            <button onclick="resetSimulation()">Reset</button>
+            <select onchange="changeSimulationSpeed(this.value)">
+                <option value="1">Normal Speed</option>
+                <option value="2">2x Speed</option>
+                <option value="0.5">Slow Motion</option>
+            </select>
+        </nav>
+        
+        <div class="main-content">
+            <aside class="sidebar">
+                <section class="stats-panel">
+                    <h3>System Status</h3>
+                    <div class="stat-item">
+                        <span>Services:</span>
+                        <strong id="serviceCount">0</strong>
+                    </div>
+                    <div class="stat-item">
+                        <span>CPU Usage:</span>
+                        <strong id="cpuUsage">0%</strong>
+                    </div>
+                    <div class="stat-item">
+                        <span>Memory:</span>
+                        <strong id="memoryUsage">0%</strong>
+                    </div>
+                    <div class="stat-item">
+                        <span>Requests/s:</span>
+                        <strong id="requestRate">0</strong>
+                    </div>
+                </section>
+                
+                <section class="service-manager">
+                    <h3>Service Control</h3>
+                    <button onclick="provisionService()">Provision Service</button>
+                    <button onclick="decommissionService()">Decommission</button>
+                    <button onclick="scaleService()">Scale Up</button>
+                    <button onclick="triggerFault()">Inject Fault</button>
+                </section>
+            </aside>
+            
+            <main class="visualization">
+                <div class="canvas-wrapper">
+                    <canvas id="serviceCanvas"></canvas>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-events" id="timelineEvents"></div>
+                </div>
+            </main>
+            
+            <aside class="right-panel">
+                <section class="metrics">
+                    <h3>Real-time Metrics</h3>
+                    <div id="metricsGraph"></div>
+                </section>
+                
+                <section class="alerts">
+                    <h3>System Alerts</h3>
+                    <div id="alertsList" class="alerts-list"></div>
+                </section>
+            </aside>
+        </div>
+    </div>
+    
+    <script src="simulator.js"></script>
+</body>
+</html>
